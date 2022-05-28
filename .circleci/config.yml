@@ -8,7 +8,6 @@ jobs:
     executor: hugo/default
     steps:
       - checkout
-      - run: hugo init
       - run: hugo new site .
       - run: git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
       - run: echo theme = \"ananke\" >> config.toml
