@@ -15,3 +15,10 @@ jobs:
           hugo -D -d dist
       - store_artifacts:
           path: dist
+      - run: |
+          git config --global user.name "$(git show -s --format='%an' "${HEAD}")"
+          git config --global user.email "$(git show -s --format='%ae' "${HEAD}")"
+          git checkout -b release
+          git add .
+          git commit -m 'release hugo site'
+          git push origin release -f 
