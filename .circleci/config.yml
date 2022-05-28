@@ -11,7 +11,7 @@ jobs:
       - run: hugo new site .
       - run: git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
       - run: echo theme = \"ananke\" >> config.toml
-      - run: sudo tar xvzf ~/Downloads/ngrok-v3-stable-linux-amd64.tgz -C /usr/local/bin
       - run: |
-          hugo serve
-          ngrok http 1313
+          hugo -D -d dist
+      - store_artifacts:
+          path: dist
