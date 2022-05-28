@@ -19,7 +19,9 @@ jobs:
       - checkout
       - run: hugo new site . --force
       - run: git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
-      - run: echo theme = \"ananke\" >> config.toml
+      - run: |
+          echo 'theme = "ananke"' >> config.toml
+          echo "baseURL = https://${CIRCLE_PROJECT_USERNAME}.github.io/${CIRCLE_PROJECT_REPONAME}" >> config.toml
       - run: |
           hugo -D -d docs
       - store_artifacts:
